@@ -1,9 +1,12 @@
 package Utils;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -19,7 +22,7 @@ public class BaseDriver {
     public static WebDriverWait wait;
 
     @BeforeClass
-    void baslangicIslemleri()
+    public void baslangicIslemleri()
     {
         System.out.println("Baslangic islemleri");
         // ilk adimda calisan kismi
@@ -48,13 +51,36 @@ public class BaseDriver {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
+        loginTest();
+
+    }
+
+    void loginTest()
+    {
+        driver.get("https://opencart.abstracta.us/index.php?route=account/login");
+
+        System.out.println("login test");
+        WebElement inbutEmail= driver.findElement(By.id("input-email"));
+        inbutEmail.sendKeys("saramul@gmail.com");
+
+        WebElement password= driver.findElement(By.id("input-password"));
+        password.sendKeys("sara2022+");
+
+        WebElement loginBtn= driver.findElement(By.cssSelector("input[type='submit']"));
+        loginBtn.click();
+
+        Assert.assertEquals(driver.getTitle(),"My Account", "Login basarisiz");
+
+        Tools.Bekle(5);
+
     }
 
 
 
     @AfterClass
-    public static void driverBekleKapat()
+    public void bitisIslemleri()
     {
+        System.out.println("Bitis islemleri");
         Tools.Bekle(3);
         driver.quit();
     }
