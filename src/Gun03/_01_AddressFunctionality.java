@@ -11,7 +11,9 @@ package Gun03;
 import Utils.BaseDriver;
 import Utils.Tools;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
@@ -112,6 +114,49 @@ public class _01_AddressFunctionality extends BaseDriver {
 
         silinebilirAdress.click();
         Tools.successMessageValidation();
+
+    }
+
+
+    //2.Yöntem
+    @Test(enabled = false)
+    void addAddressAction()
+    {
+        WebElement name = driver.findElement(By.cssSelector("#input-firstname"));
+
+        Actions actions = new Actions(driver);
+        actions.click(name)
+                .sendKeys("Birkan")
+                .sendKeys(Keys.TAB)
+                .sendKeys("Filiz")
+                .sendKeys(Keys.TAB)
+                .sendKeys(Keys.TAB)
+                .sendKeys("babatasi mah.")
+                .sendKeys(Keys.TAB)
+                .sendKeys(Keys.TAB)
+                .sendKeys("Mugla")
+                .sendKeys(Keys.TAB)
+                .sendKeys("48300")
+                .sendKeys(Keys.TAB).build().perform();
+
+        WebElement countrySelect = driver.findElement(By.xpath("(//select[@id='input-country'])[1]"));
+
+        Select slct = new Select(countrySelect);
+        slct.selectByVisibleText("Turkey");
+        actions.sendKeys(Keys.ENTER).build().perform();
+
+
+        WebElement regionSelect = driver.findElement(By.xpath("(//select[@id='input-zane'])[1]"));
+
+        Select slct2 = new Select(regionSelect);
+        slct2.selectByVisibleText("Mugla");
+        actions.sendKeys(Keys.ENTER).build().perform();
+
+        WebElement radioButton = driver.findElement(By.cssSelector("input[value='1']"));
+        radioButton.click();
+
+        WebElement confirm = driver.findElement(By.cssSelector("input[value='Continue']"));
+        confirm.click();
 
     }
 
