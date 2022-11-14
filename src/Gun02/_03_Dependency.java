@@ -12,7 +12,7 @@ public class _03_Dependency {
     void startCar()
     {
         System.out.println("startCar");
-        //Assert.fail();  // Assert.fail() olunca calismiyor / kapatinca "priority" kaldirmaliyiz.
+        //Assert.fail();      // Assert.fail() olunca calismiyor / kapatinca "priority" kaldirmaliyiz.
     }
 
 

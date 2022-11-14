@@ -20,7 +20,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class _01_AddressFunctionality extends BaseDriver {
+public class _0_AddressFunctionality extends BaseDriver {
 
     @Test
     void addAddress()
