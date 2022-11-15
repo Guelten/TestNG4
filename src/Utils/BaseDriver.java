@@ -21,7 +21,7 @@ public class BaseDriver {
     public static WebDriver driver;
     public static WebDriverWait wait;
 
-    @BeforeClass
+    @BeforeClass(groups = "SmokeTest")
     public void baslangicIslemleri()
     {
         System.out.println("Baslangic islemleri");
@@ -77,7 +77,7 @@ public class BaseDriver {
 
 
 
-    @AfterClass
+    @AfterClass(enabled = true, groups = "SmokeTest")
     public void bitisIslemleri()
     {
         System.out.println("Bitis islemleri");
