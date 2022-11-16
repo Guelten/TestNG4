@@ -7,7 +7,7 @@ public class _01_Groups {
     @Test(groups = "SmokeTest")
     void Test1() {System.out.println("Test 1 SmokeTest");}
 
-    @Test(groups = "Regression")
+    @Test(groups = "Regression")  // @Test(groups = {"Regression","SmokeTest"})
     void Test3() {System.out.println("Test 3 Regression");}
 
     @Test(groups = "Regression")
