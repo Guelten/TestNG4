@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 public class BaseDriverParameter {
 
-    public static WebDriver driver;
+    public WebDriver driver;
     public static WebDriverWait wait;
 
     @BeforeClass
@@ -41,6 +41,7 @@ public class BaseDriverParameter {
             if (browser.equalsIgnoreCase("firefox")){
             System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");
             System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");
+            System.out.println("firefox started");
             driver = new FirefoxDriver();
         }
 
